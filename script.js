@@ -1,12 +1,4 @@
-// ── CURSOR
-  const cursor = document.getElementById('cursor');
-  const glow = document.getElementById('cursor-glow');
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = (e.clientX) + 'px';
-    cursor.style.top = (e.clientY) + 'px';
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  });
+
 
   // ── COUNTDOWN
   // Логика: таймер 3 часа.
@@ -50,7 +42,15 @@
   })();
 
   // ── FADE IN
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+  document.addEventListener('DOMContentLoaded', function() {
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { 
+            if (e.isIntersecting) { 
+                e.target.classList.add('in'); 
+                io.unobserve(e.target); 
+            } 
+        });
+    }, { threshold: 0.08 });
+    
+    document.querySelectorAll('.fade').forEach(el => io.observe(el));
+});
