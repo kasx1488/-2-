@@ -728,12 +728,12 @@
   }
 
   /* ── FADE IN ── */
-  .fade {
+  .fade-me {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.55s ease, transform 0.55s ease;
   }
-  .fade.in { opacity: 1; transform: none; }
+  .fade-me.in { opacity: 1; transform: none; }
 
   .hero-socials {
     display: flex;
