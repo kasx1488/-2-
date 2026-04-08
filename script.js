@@ -1,3 +1,14 @@
+// ── CURSOR
+const cursor = document.getElementById('cursor');
+const glow = document.getElementById('cursor-glow');
+if (cursor && glow) {
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+}
 
 // ── COUNTDOWN
 (function() {
@@ -35,6 +46,27 @@
   setInterval(tick, 1000);
 })();
 
+// ── FADE IN (ИСПРАВЛЕНО)
+(function() {
+  const fadeElements = document.querySelectorAll('.fade-me');
+  
+  // Принудительно показываем все элементы
+  fadeElements.forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+  
+  // IntersectionObserver для анимации при скролле
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { 
+      if (e.isIntersecting) { 
+        e.target.classList.add('in'); 
+      }
+    });
+  }, { threshold: 0.08 });
+  
+  fadeElements.forEach(el => io.observe(el));
+})();
 // ── FADE IN (ИСПРАВЛЕНО)
 (function() {
   const fadeElements = document.querySelectorAll('.fade-me');
