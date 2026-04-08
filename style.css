@@ -729,7 +729,7 @@
 
   /* ── FADE IN ── */
   .fade-me {
-    opacity: 0;
+   /* opacity: 0; */ /* <--- ЗАКОММЕНТИРОВАНО */
     transform: translateY(20px);
     transition: opacity 0.55s ease, transform 0.55s ease;
   }
